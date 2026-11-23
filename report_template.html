@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Backend job search</title>
+<style>
+:root{font:15px/1.5 system-ui,-apple-system,sans-serif;color:#182438;background:#f3f5f9;color-scheme:light}*{box-sizing:border-box}body{margin:0}main{max-width:1120px;margin:auto;padding:36px 24px}h1{font-size:30px;letter-spacing:-1px;margin:0}header p{color:#5a687d;margin:6px 0 24px}a{color:#224cbd;text-decoration:none}a:hover{text-decoration:underline}button,input,select{font:inherit}button,select,input{border:1px solid #cbd3e0;border-radius:7px;background:white;color:inherit;padding:9px 11px;min-width:0}button{cursor:pointer}button:hover{background:#eef2fb}button:disabled{cursor:default;opacity:.45}:focus-visible{outline:3px solid #627ff1;outline-offset:3px}.filters{background:white;border:1px solid #dde3ed;border-radius:12px;padding:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:#506077}.experience-filter{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px 20px;border:0;border-top:1px solid #e7ebf2;padding:10px 0 0;margin:0}.experience-filter legend{font-size:12px;color:#506077;font-weight:600;padding:0 8px 0 0}.experience-filter label{flex-direction:row;align-items:center;gap:6px}.experience-filter input{width:auto;accent-color:#224cbd}.multi{position:relative;min-width:0}.filter-label{display:block;font-size:12px;font-weight:600;color:#506077;margin-bottom:5px}.multi summary{width:100%;font-size:14px;line-height:21px;color:#182438;border:1px solid #cbd3e0;border-radius:7px;background:white;padding:9px 11px;overflow-wrap:anywhere}.multi-panel{position:absolute;top:100%;left:0;width:100%;z-index:10;background:white;border:1px solid #cbd3e0;border-radius:8px;box-shadow:0 8px 24px #18243822;padding:12px;margin-top:5px}.multi-options{max-height:220px;overflow:auto;margin:10px 0}.multi-options label{flex-direction:row;align-items:start;gap:8px;padding:6px 2px;overflow-wrap:anywhere}.multi-options input{width:auto;margin-top:3px;accent-color:#224cbd}.multi-panel button{font-size:12px;padding:5px 8px}.search-field{grid-column:span 2}input,select{width:100%;font-size:14px}.results-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:22px 0 12px}.results-bar p{margin:0}#count{font-weight:650}.muted,.source{color:#65738a;font-size:12px}.results-bar button{border:0;background:transparent;color:#224cbd;padding:5px}#jobs{display:grid;gap:10px}article{background:white;border:1px solid #dde3ed;border-radius:10px;padding:18px 20px;overflow-wrap:anywhere}.job-heading{display:flex;justify-content:space-between;align-items:start;gap:14px}.company{font-size:12px;font-weight:650;color:#506077;margin:0 0 3px}h2{font-size:17px;line-height:1.4;margin:0}h2 a{color:#182438}.source{flex-shrink:0;max-width:30%;text-align:right}.location{font-size:13px;color:#65738a;margin:7px 0 11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{background:#f1f4f9;color:#526078;font-size:11px;border-radius:5px;padding:3px 7px}.tag.compensation{background:#eef2ff;color:#2949a0;max-width:100%}.tag.possible,.tag.open{background:#e9f7ee;color:#20603b}.tag.above_target{background:#fff3df;color:#81531a}summary{cursor:pointer;color:#224cbd;font-size:12px;width:fit-content}article details{margin-top:12px}.detail-content{border-top:1px solid #e7ebf2;margin-top:12px;padding-top:6px;font-size:13px}.detail-content p{white-space:pre-wrap;line-height:1.7}h3{font-size:13px;margin:14px 0 4px}.detail-content p{margin:4px 0 14px}.pager{display:flex;justify-content:center;align-items:center;gap:18px;margin:24px 0;font-size:13px}#empty{background:white;padding:40px;text-align:center;border-radius:10px;color:#65738a}footer{border-top:1px solid #dde3ed;margin-top:26px;padding-top:18px;color:#65738a;font-size:12px}footer p{max-width:850px}footer li{margin:6px 0}[hidden]{display:none!important}@media(max-width:700px){main{padding:22px 14px}.filters{grid-template-columns:repeat(2,minmax(0,1fr));padding:14px}h1{font-size:26px}article{padding:15px}.source{font-size:11px}.results-bar{align-items:start}header p{font-size:13px}}
+</style>
+</head>
+<body><main>
+<header><h1>Find your next backend role.</h1><p>Backend, applied AI &amp; distributed systems · Target: @@TARGET@@ years of experience</p></header>
+<section class="filters" aria-label="Filter jobs">
+<label class="search-field" for="search">Search · match any keyword<input id="search" type="search" placeholder='backend, Python, "distributed systems"' aria-describedby="search-help"><span id="search-help" class="muted">Search job details. Use quotes to keep a phrase together.</span></label>
+<div class="multi"><span class="filter-label" id="location-label">Location</span><details id="location-filter"><summary id="location-summary" aria-describedby="location-label">All locations</summary><div class="multi-panel"><label for="location-search">Search listed locations<input id="location-search" type="search" placeholder="India, London, worldwide…" aria-describedby="location-help"></label><p id="location-help" class="muted">Values from listings; remote does not imply worldwide eligibility.</p><div id="location-options" class="multi-options" role="group" aria-label="Location options"></div><p id="location-empty" class="muted" hidden>No matching locations.</p><button id="location-clear" type="button">Clear selections</button></div></details></div>
+
+<div class="multi"><span class="filter-label" id="company-label">Company</span><details id="company-filter"><summary id="company-summary" aria-describedby="company-label">All companies</summary><div class="multi-panel"><label for="company-search">Search companies<input id="company-search" type="search" placeholder="Type to find companies…"></label><div id="company-options" class="multi-options" role="group" aria-label="Company options"></div><p id="company-empty" class="muted" hidden>No matching companies.</p><button id="company-clear" type="button">Clear selections</button></div></details></div>
+<div class="multi"><span class="filter-label" id="source-label">Source</span><details id="source-filter"><summary id="source-summary" aria-describedby="source-label">All sources</summary><div class="multi-panel"><label for="source-search">Search sources<input id="source-search" type="search" placeholder="Type to find sources…"></label><div id="source-options" class="multi-options" role="group" aria-label="Source options"></div><p id="source-empty" class="muted" hidden>No matching sources.</p><button id="source-clear" type="button">Clear selections</button></div></details></div>
+<label for="mode">Work arrangement<select id="mode"><option value="">Any arrangement</option><option value="remote">Remote</option><option value="hybrid">Hybrid</option><option value="onsite">On-site</option><option value="unknown">Not specified</option></select></label>
+<label for="pay">Pay information<select id="pay"><option value="">Any pay information</option><option value="compensation_review">Compensation supplied</option><option value="money_mentions_review">Money mentions to verify</option><option value="unknown">Undisclosed</option></select></label>
+<fieldset class="experience-filter"><legend>Experience · select any combination</legend>
+<label><input type="checkbox" name="experience" value="possible" checked> Minimum ≤ @@TARGET@@ years</label>
+<label><input type="checkbox" name="experience" value="open" checked> Open to all / new grads welcome</label>
+<label><input type="checkbox" name="experience" value="unknown"> Unclear requirements</label>
+<label><input type="checkbox" name="experience" value="above_target"> Above @@TARGET@@ years</label>
+</fieldset>
+</section>
+<div class="results-bar"><div><p id="count" aria-live="polite"></p><span class="muted">Open a role for requirements and full details.</span></div><button id="reset" type="button">Reset filters</button></div>
+<section id="jobs" aria-label="Job results">@@CARDS@@</section>
+<p id="empty" hidden>No matching roles. Try fewer filters or include unclear experience.</p>
+<nav class="pager" aria-label="Results pages"><button id="previous" type="button">← Previous</button><span id="page" aria-live="polite"></span><button id="next" type="button">Next →</button></nav>
+<footer><p>Experience and work arrangements are screening hints. Check country eligibility and requirements on the original listing. Money mentions may refer to funding; undisclosed pay does not mean below ₹20L.</p><details><summary>Source status &amp; data notes · @@ERRORS@@ errors</summary><ul>@@HEALTH@@</ul><p>ATS listings absent from a successful complete snapshot become unlisted. Feed disappearance is not proof of closure. Responses may be cached for six hours; Remotive adds a 24-hour delay. HN posts may contain several roles.</p></details></footer>
+</main>
+<script>
+const cards = [...document.querySelectorAll('article')];
+const ids = ['search', 'mode', 'pay'];
+const fields = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+const experienceOptions = [...document.querySelectorAll('input[name="experience"]')];
+const el = id => document.getElementById(id);
+let page = 1;
+const pageSize = 25;
+const multi = {};
+const multiNames = {company: 'companies', source: 'sources', location: 'locations'};
+for (const [key, plural] of Object.entries(multiNames)) {
+  const options = [];
+  const search = el(`${key}-search`);
+  multi[key] = {options, search};
+  const values = [...new Set(cards.map(card => card.dataset[key]))].sort((a, b) => a.localeCompare(b));
+  for (const value of values) {
+    const label = document.createElement('label');
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.value = value;
+    const text = document.createElement('span');
+    text.textContent = value || 'Not specified';
+    label.append(input, text);
+    el(`${key}-options`).append(label);
+    options.push({input, label, text: text.textContent.toLowerCase()});
+    input.addEventListener('change', () => {
+      const selected = options.filter(option => option.input.checked);
+      el(`${key}-summary`).textContent = selected.length === 1 ? selected[0].input.value || 'Not specified' : selected.length ? `${selected.length} ${plural} selected` : `All ${plural}`;
+      page = 1; render();
+    });
+  }
+  search.addEventListener('input', () => {
+    const query = search.value.toLowerCase().trim();
+    options.forEach(option => { option.label.hidden = !option.text.includes(query); });
+    el(`${key}-empty`).hidden = options.some(option => !option.label.hidden);
+  });
+  el(`${key}-clear`).addEventListener('click', () => { clearMulti(key); page = 1; render(); });
+  el(`${key}-filter`).addEventListener('keydown', event => {
+    if (event.key === 'Escape') { el(`${key}-filter`).open = false; el(`${key}-summary`).focus(); }
+  });
+}
+function clearMulti(key) {
+  multi[key].options.forEach(option => { option.input.checked = false; option.label.hidden = false; });
+  multi[key].search.value = '';
+  el(`${key}-empty`).hidden = true;
+  el(`${key}-summary`).textContent = `All ${multiNames[key]}`;
+}
+// Search full descriptions too, without repeatedly scanning hidden content on each keystroke.
+const searchable = cards.map(card => card.textContent.toLowerCase());
+function render() {
+  const words = [...fields.search.value.toLowerCase().matchAll(/"([^"]+)"|([^,\s"]+)/g)]
+    .map(match => (match[1] || match[2]).trim()).filter(Boolean);
+  const selectedExperience = new Set(experienceOptions.filter(option => option.checked).map(option => option.value));
+  const selected = Object.fromEntries(Object.entries(multi).map(([key, filter]) => [key, new Set(filter.options.filter(option => option.input.checked).map(option => option.input.value))]));
+  const matching = cards.filter((card, index) => {
+    const data = card.dataset;
+    return (words.length === 0 || words.some(word => searchable[index].includes(word)))
+      && ['mode', 'pay'].every(key => !fields[key].value || data[key] === fields[key].value)
+      && Object.keys(multi).every(key => selected[key].size === 0 || selected[key].has(data[key]))
+      && selectedExperience.has(data.experience);
+  });
+  const pages = Math.max(1, Math.ceil(matching.length / pageSize));
+  page = Math.min(page, pages);
+  cards.forEach(card => { card.hidden = true; });
+  matching.slice((page - 1) * pageSize, page * pageSize).forEach(card => { card.hidden = false; });
+  el('count').textContent = `${matching.length} matching ${matching.length === 1 ? 'role' : 'roles'} · ${cards.length} total`;
+  el('page').textContent = matching.length ? `${(page - 1) * pageSize + 1}–${Math.min(page * pageSize, matching.length)} of ${matching.length}` : '0 results';
+  el('previous').disabled = page === 1;
+  el('next').disabled = page === pages;
+  el('empty').hidden = matching.length !== 0;
+}
+for (const id of ids) fields[id].addEventListener(id === 'search' ? 'input' : 'change', () => { page = 1; render(); });
+experienceOptions.forEach(option => option.addEventListener('change', () => { page = 1; render(); }));
+el('reset').addEventListener('click', () => {
+  ids.forEach(id => { fields[id].value = ''; });
+  Object.keys(multi).forEach(clearMulti);
+  experienceOptions.forEach(option => { option.checked = option.defaultChecked; });
+  page = 1; render();
+});
+el('previous').addEventListener('click', () => { page--; render(); });
+el('next').addEventListener('click', () => { page++; render(); });
+render();
+</script>
+</body></html>
